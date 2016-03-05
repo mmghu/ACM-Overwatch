@@ -21,7 +21,7 @@ myFirebaseRef.child("system-variables").once('value', function(dataSnapshot){
 myFirebaseRef.child("system-variables").on("child_changed", function(snapshot) {
   // Store instantaneus status in newOccupied
   var newDataVal = snapshot.exportVal();
-  var snapshotName = snapshot.name();
+  var snapshotName = snapshot.key();
 
   switch(snapshotName){
     // Update status again
