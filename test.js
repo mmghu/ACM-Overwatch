@@ -46,10 +46,11 @@ function checkTime(i) {
     return i;
 }
 
+//counts time, how exciting
 function startTime() {
-  var d = new Date(updateTime);
+  var d = new Date(updateTime);//whatever new time is
   var epoch = new Date();
-  var timeDiff = Math.abs(d.getTime() -epoch.getTime())/1000; // in seconds
+  var timeDiff = Math.abs(d.getTime() -epoch.getTime())/1000; // in milliseconds
   var timeSince = timeDiff/(3600);//in hours
   var timeType = "hours";
   if(timeDiff<60){
@@ -57,13 +58,25 @@ function startTime() {
     timeType = "seconds";
   } else if(timeDiff < 3600){
     timeSince = Math.round(timeDiff/60);
-    timeType = "minutes";
+    if(timeSince==1){
+      timeType="minute";
+    }else{
+      timeType = "minutes";
+    }
   }else if(timeDiff < 3600*24){
     timeSince = Math.round(timeDiff/3600);
-    timeType = "hours";
+    if(timeSince==1){
+      timeType="hour";
+    }else{
+      timeType = "hours";
+    }
   }else{
     timeSince = Math.round(timeDiff/(3600*24));
-    timeType = "days";
+    if(timeSince==1){
+      timeType="day";
+    }else{
+      timeType = "days";
+    }
   }
   $("#result2").html("The time was last updated " + timeSince+" "+timeType+" ago.");
   var t = setTimeout(startTime, 500);
