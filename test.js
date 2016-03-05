@@ -7,7 +7,7 @@ myFirebaseRef.once('value', function(dataSnapshot){
   var data = dataSnapshot.exportVal();
 
   // If the database entry "occupied" is set to true, alert
-  if(data.occupied == "true"){
+  if(data.occupied){
     alert("someone is in the room");
   }
 
