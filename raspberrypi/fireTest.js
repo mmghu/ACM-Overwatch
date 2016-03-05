@@ -5,10 +5,11 @@ var sysRef = myFirebaseRef.child("system-variables");
 
 //provides the input that we're using
 var Gpio = require('onoff').Gpio,
-    button = new Gpio(17, 'in','both');
+    sensor = new Gpio(17, 'in','both');
 
 //function to watch for when button updates
-button.watch(function(err, value) {
+sensor.watch(function(err, value) {
+  var updateTime =Date.now();//gets the time of the request
   //value is 0 for false and 1 for true
   if(value==1){
     console.log("true");
@@ -17,4 +18,7 @@ button.watch(function(err, value) {
     console.log("false");
     sysRef.update({"occupied":false});
   }
+
+  //updates the time of the request to the most recent in the database
+  sysRef.update({"timechanged":updateTime});
 });
