@@ -18,7 +18,6 @@ sensor.watch(function(err, value) {
     previousTime = snapshot.exportVal().timechanged;
     //only let the value change every 30 seconds max for now
     if((updateTime-previousTime)/1000>delayTime){
-      console.log((updateTime-previousTime));
       var previousState = snapshot.exportVal().occupied;
       //value is 0 for false and 1 for true
       if(previousState&&value==0){

@@ -78,7 +78,7 @@ function startTime() {
       timeType = "days";
     }
   }
-  $("#result2").html("The time was last updated " + timeSince+" "+timeType+" ago.");
+  $("#result2").html("Last state change " + timeSince+" "+timeType+" ago.");
   var t = setTimeout(startTime, 500);
 }
 startTime();
